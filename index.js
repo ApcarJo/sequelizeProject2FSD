@@ -10,4 +10,3 @@ db.then(()=>{
     app.listen(port, ()=> console.log(`Servidor levantado en http://localhost:${port}`));
 })
 .catch((err)=> console.log(err.message));
-

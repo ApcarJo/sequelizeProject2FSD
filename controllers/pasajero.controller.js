@@ -9,6 +9,12 @@ class Viajero {
 
     }
 
+    async namePassenger(nombre){
+        return Pasajero.findOne({
+            where: {nombre}
+        })
+    }
+
     async passengerId(id){
 
         return Pasajero.findByPk(id);
@@ -20,8 +26,11 @@ class Viajero {
         let password = body.password;
         let passwordHashed = bcrypt.hashSync(password, 10);
         body.password = passwordHashed;
-
         return Pasajero.create(body);
+    }
+
+    async loginPassenger(body){
+
     }
 
     async deletePassenger(id){

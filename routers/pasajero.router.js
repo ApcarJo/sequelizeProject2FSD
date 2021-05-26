@@ -37,6 +37,18 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+    try {
+        const body = req.body;
+        res.json(await pasajeroController.loginPassenger(body));   
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        }); 
+    }
+});
+
+
 router.put('/', async (req, res) =>{
     try {
         const cuerpoDeDatos = req.body;

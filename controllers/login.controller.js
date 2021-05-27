@@ -19,6 +19,7 @@ class LoginController {
         let payload = {
             pasajeroId : pasajero.id,
             createdAt: new Date,
+            isAdmin: pasajero.isAdmin,
         };
 
         return jwt.sign(payload, secret);

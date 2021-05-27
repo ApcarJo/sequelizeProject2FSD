@@ -1,10 +1,11 @@
 const router = require('express').Router(); //Llama a Router que está dentro de express
 const pasajeroController = require('../controllers/pasajero.controller');
+const admin = require('../middleware/admin');
 
 
 // API CRUD PASAJERO
 
-router.get('/', async (req, res) =>{
+router.get('/', admin, async (req, res) =>{
     try {
         res.json(await pasajeroController.allPassengers());
     }catch (err) {
@@ -61,7 +62,7 @@ router.put('/', authenticate, async (req, res) =>{
     }
 });
 
-router.delete('/:id', authenticate, async (req, res) =>{
+router.delete('/:id', admin, async (req, res) =>{
     try {
         const id = req.params.id;
         res.json(await pasajeroController.deletePassenger(id));

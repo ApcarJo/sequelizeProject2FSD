@@ -1,5 +1,6 @@
 const router = require('express').Router(); //Llama a Router que está dentro de express
 const pasajeroController = require('../controllers/pasajero.controller');
+const authenticate = require('../middleware/authenticate');
 const admin = require('../middleware/admin');
 
 

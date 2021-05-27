@@ -29,9 +29,6 @@ class Viajero {
         return Pasajero.create(body);
     }
 
-    async loginPassenger(body){
-
-    }
 
     async deletePassenger(id){
         return Pasajero.destroy({where: {id: id}});
@@ -45,7 +42,6 @@ class Viajero {
             {where: {id: cuerpoDeDatos.id}}
         )
     }
-
 }
 
 let pasajeroController = new Viajero();

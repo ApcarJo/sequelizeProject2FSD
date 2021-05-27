@@ -7,8 +7,8 @@ class LoginController {
 
     async validate(nombreCheck,passwordCheck){
         
-        let nombre = await pasajeroController.namePassenger(nombreCheck);
-        let password = nombre.password;
+        let pasajero = await pasajeroController.namePassenger(nombreCheck);
+        let password = pasajero.password;
 
         let verify = await bcrypt.compare(passwordCheck, password);
 
@@ -17,8 +17,8 @@ class LoginController {
         }
 
         let payload = {
-            pasajeroId : nombre.id,
-            createdAt: new Date
+            pasajeroId : pasajero.id,
+            createdAt: new Date,
         };
 
         return jwt.sign(payload, secret);

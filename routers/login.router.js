@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const logintController = require('../controllers/login.Controller');
+const loginController = require('../controllers/login.Controller');
 const pasajeroController = require('../controllers/pasajero.Controller');
 
 router.post('/', async (req, res)=> {
@@ -7,8 +7,9 @@ router.post('/', async (req, res)=> {
 
         const nombreCheck = req.body.nombre;
         const passwordCheck= req.body.password;
-        let token = await logintController.validate(nombreCheck,passwordCheck);
-        res.json(token);
+        let token = await loginController.validate(nombreCheck,passwordCheck);
+        let pasajero = await pasajeroController.namePassenger(nombreCheck);
+        res.status(200).json({token, pasajero});
         
     }catch (err) {
         return res.status(500).json({

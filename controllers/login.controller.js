@@ -6,6 +6,13 @@ const secret = "Wayco tiene futbolín";
 class LoginController {
 
     async validate(nombreCheck,passwordCheck){
+
+        //validar los datos de entrada
+
+        if (! /[a-z]/gi.test(nombreCheck)){
+            console.log('El nombre no es correcto');
+            return;
+        }
         
         let pasajero = await pasajeroController.namePassenger(nombreCheck);
         let password = pasajero.password;
